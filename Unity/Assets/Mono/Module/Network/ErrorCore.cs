@@ -2,6 +2,7 @@
 {
     public static class ErrorCore
     {
+        //public static int ERR_LoginInfoError;
         public const int ERR_MyErrorCode = 110000;
         
         public const int ERR_KcpConnectTimeout = 100205;

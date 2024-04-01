@@ -10,10 +10,12 @@ namespace ET
 			zoneScene.AddComponent<CurrentScenesComponent>();
             zoneScene.AddComponent<ObjectWait>();
             zoneScene.AddComponent<PlayerComponent>();
+            //添加账号组件
+            zoneScene.AddComponent<AccountInfoComponent>();
             
             Game.EventSystem.Publish(new EventType.AfterCreateZoneScene() {ZoneScene = zoneScene});
             return zoneScene;
-        }
+        } 
         
         public static Scene CreateCurrentScene(long id, int zone, string name, CurrentScenesComponent currentScenesComponent)
         {
