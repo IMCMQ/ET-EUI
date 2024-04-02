@@ -18,4 +18,4 @@ namespace ET
         public int AccountType; //账号类型
     }
     
-}
+}       

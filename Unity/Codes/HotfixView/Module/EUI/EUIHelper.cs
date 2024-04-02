@@ -189,6 +189,29 @@ namespace ET
         
   #region UI按钮事件
 
+        // private static bool isClicked = false;
+        // public static void AddListennerAsync(this Button button,Func<ETTask> action)
+        // {
+        //     button.onClick.RemoveAllListeners();
+        //
+        //     async ETTask clickActionAsync()
+        //     {
+        //         isClicked = true;
+        //         await action();
+        //         isClicked = false;
+        //     }
+        //     
+        //     button.onClick.AddListener(()=>
+        //     {
+        //         if (isClicked)
+        //         {
+        //             return;
+        //         }
+        //         
+        //         clickActionAsync().Coroutine();
+        //     });
+        // }
+        
       public static void AddListenerAsyncWithId(this Button button, Func<int, ETTask> action,int id)
       { 
           button.onClick.RemoveAllListeners();
@@ -216,10 +239,13 @@ namespace ET
           });
       }
       
+      //异步方法添加Listener 目的是避免连续点击 执行完后再点击才有用
       public static void AddListenerAsync(this Button button, Func<ETTask> action)
       { 
+          //移除按钮身上所有listeners
           button.onClick.RemoveAllListeners();
 
+          //定义自己的添加时间方法
           async ETTask clickActionAsync()
           {
               UIEventComponent.Instance?.SetUIClicked(true);
@@ -227,6 +253,7 @@ namespace ET
               UIEventComponent.Instance?.SetUIClicked(false);
           }
                
+          //添加Listener之前判断
           button.onClick.AddListener(() =>
           {
               if ( UIEventComponent.Instance == null)

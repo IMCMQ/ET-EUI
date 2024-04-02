@@ -8,6 +8,7 @@
         public const int ActorLocationSenderChecker = 2;
         public const int ActorMessageSenderChecker = 3;
 
+        public const int AccountSessionCheckOutTime = 1004;
         // 不能超过1000
     }
 }
